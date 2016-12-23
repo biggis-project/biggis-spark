@@ -1,0 +1,38 @@
+version: '2.1'
+
+services:
+
+  master:
+    image: biggis/spark:2.0.2
+    hostname: master
+    ports:
+      - "4040:4040"
+      - "6066:6066"
+      - "7077:7077"
+      - "8080:8080"
+    command: start.sh master
+    environment:
+      USER_ID: ${USER_ID-1000}
+      USER_NAME: spark
+      MASTER: spark://master:7077
+      SPARK_CONF_DIR: /conf
+      SPARK_PUBLIC_DNS: 127.0.0.1
+
+  worker:
+    image: biggis/spark:2.0.2
+    hostname: worker
+    depends_on:
+      - master
+    command: start.sh worker
+    ports:
+      - "8081:8081"
+    environment:
+      USER_ID: ${USER_ID-1000}
+      USER_NAME: spark
+      SPARK_MASTER: master
+      SPARK_CONF_DIR: /conf
+      SPARK_PUBLIC_DNS: 127.0.0.1
+      SPARK_WORKER_CORES: 1
+      SPARK_WORKER_MEMORY: 1g
+      # SPARK_WORKER_PORT: 8082
+      SPARK_WORKER_WEBUI_PORT: 8081
