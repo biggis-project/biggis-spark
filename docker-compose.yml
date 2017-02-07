@@ -3,7 +3,7 @@ version: '2.1'
 services:
 
   master:
-    image: biggis/spark:2.0.2
+    image: biggis/spark:2.1.0
     hostname: master
     ports:
       - "4040:4040"
@@ -19,7 +19,7 @@ services:
       SPARK_PUBLIC_DNS: 127.0.0.1
 
   worker:
-    image: biggis/spark:2.0.2
+    image: biggis/spark:2.1.0
     hostname: worker
     depends_on:
       - master

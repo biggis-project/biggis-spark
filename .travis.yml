@@ -5,7 +5,7 @@ services:
 
 env:
   global:
-    - IMG=biggis/spark:2.0.2
+    - IMG=biggis/spark:2.1.0
 
 install:
   #login to dockerhub
