@@ -1,6 +1,5 @@
 # BigGIS Spark
-[![Build Status](https://travis-ci.org/biggis-project/biggis-spark.svg?branch=master)][Travis]
-[Travis]: https://travis-ci.org/biggis-project/biggis-spark
+[![Build Status](https://api.travis-ci.org/biggis-project/biggis-spark.svg)](https://travis-ci.org/biggis-project/biggis-spark)
 Docker container for Apache Spark
 
 
