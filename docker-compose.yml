@@ -3,7 +3,7 @@ version: '2.1'
 services:
 
   master:
-    image: biggis/spark:2.1.0-test
+    image: biggis/spark:2.1.0
     hostname: master
     ports:
       #- "4040:4040"
@@ -15,15 +15,9 @@ services:
       USER_ID: ${USER_ID-1000}
       USER_NAME: spark
       TIMEZONE: Europe/Berlin
-      # MASTER: spark://master:7077
-      # SPARK_CONF_DIR: /conf
-      # SPARK_PUBLIC_DNS: 127.0.0.1
-    #volumes:
-      #- /Users/patrickwiener/Development/GitHub/biggis-project/biggis-landuse/data:/tmp/data
-      #- ~/Development/GitHub/biggis-project/biggis-landuse/geotrellis-catalog:/tmp/geotrellis-catalog
 
   worker:
-    image: biggis/spark:2.1.0-test
+    image: biggis/spark:2.1.0
     hostname: worker
     depends_on:
       - master
@@ -35,12 +29,3 @@ services:
       USER_NAME: spark
       TIMEZONE: Europe/Berlin
       SPARK_MASTER: master
-      # SPARK_CONF_DIR: /conf
-      # SPARK_PUBLIC_DNS: 127.0.0.1
-      # SPARK_WORKER_CORES: 1
-      # SPARK_WORKER_MEMORY: 1g
-      # SPARK_WORKER_PORT: 8082
-      # SPARK_WORKER_WEBUI_PORT: 8081
-    # volumes:
-    #   - /Users/patrickwiener/Development/GitHub/biggis-project/biggis-landuse/data:/tmp/data
-      #- ~/Development/GitHub/biggis-project/biggis-landuse/geotrellis-catalog:/tmp/geotrellis-catalog
