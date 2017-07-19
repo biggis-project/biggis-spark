@@ -1,4 +1,4 @@
-FROM biggis/base:oraclejava8-jre
+FROM biggis/hdfs:2.7.1
 
 MAINTAINER wipatrick
 
@@ -7,6 +7,9 @@ ARG SPARK_ARCHIVE=http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0-bin-hadoop2.7
 
 ARG BUILD_DATE
 ARG VCS_REF
+
+ENV SPARK_HOME /opt/spark-${SPARK_VERSION}-bin-hadoop2.7
+ENV PATH $PATH:${SPARK_HOME}/bin:${SPARK_HOME}/sbin
 
 LABEL eu.biggis-project.build-date=$BUILD_DATE \
       eu.biggis-project.license="MIT" \
@@ -22,14 +25,11 @@ RUN set -x && \
     apk --update add --virtual build-dependencies curl && \
     curl -s ${SPARK_ARCHIVE} | tar -xzf - -C /opt && \
     ln -s /opt/spark-${SPARK_VERSION}-bin-hadoop2.7 /opt/spark && \
+    mkdir -p /data/spark && \
     apk del build-dependencies && \
     rm -rf /var/cache/apk/*
 
-ENV SPARK_HOME /opt/spark-${SPARK_VERSION}-bin-hadoop2.7
-ENV PATH $PATH:${SPARK_HOME}/bin
-
-ADD start.sh $SPARK_HOME/bin/
-
+COPY ./files /
 WORKDIR /opt/spark
 
-CMD ["start.sh", "sh", "-c"]
+CMD ["start.sh"]
