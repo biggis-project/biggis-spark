@@ -3,7 +3,7 @@ set -eo pipefail
 
 DEPLOY_MODE=${DEPLOY_MODE:-cluster}
 CLASS=${CLASS}
-SPARK_MASTER_ADRESS=${SPARK_MASTER_ADDRESS:-master}
+SPARK_MASTER_ADRESS=${SPARK_MASTER_ADDRESS:-spark-master}
 PATH_TO_JAR=$1
 
 function bootstrap {
