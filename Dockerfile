@@ -9,6 +9,7 @@ ARG BUILD_DATE
 ARG VCS_REF
 
 ENV SPARK_HOME /opt/spark-${SPARK_VERSION}-bin-hadoop2.7
+ENV SPARK_CONF_DIR /opt/spark/conf
 ENV PATH $PATH:${SPARK_HOME}/bin:${SPARK_HOME}/sbin
 
 LABEL eu.biggis-project.build-date=$BUILD_DATE \
@@ -24,8 +25,7 @@ LABEL eu.biggis-project.build-date=$BUILD_DATE \
 RUN set -x && \
     apk --update add --virtual build-dependencies curl && \
     curl -s ${SPARK_ARCHIVE} | tar -xzf - -C /opt && \
-    ln -s /opt/spark-${SPARK_VERSION}-bin-hadoop2.7 /opt/spark && \
-    mkdir -p /data/spark && \
+    # mkdir -p /data/spark && \
     apk del build-dependencies && \
     rm -rf /var/cache/apk/*
 

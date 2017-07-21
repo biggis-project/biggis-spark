@@ -2,9 +2,9 @@ version: '2.1'
 
 services:
 
-  master:
+  spark-master:
     image: biggis/spark:2.1.0
-    hostname: master
+    hostname: spark-master
     ports:
       #- "4040:4040"
       - "6066:6066"
@@ -15,12 +15,13 @@ services:
       USER_ID: ${USER_ID-1000}
       USER_NAME: spark
       TIMEZONE: Europe/Berlin
+      HADOOP_MASTER_ADDRESS: hdfs-name
 
-  worker:
+  spark-worker:
     image: biggis/spark:2.1.0
-    hostname: worker
+    hostname: spark-worker
     depends_on:
-      - master
+      - spark-master
     command: start.sh worker
     ports:
       - "8081:8081"
@@ -28,4 +29,10 @@ services:
       USER_ID: ${USER_ID-1000}
       USER_NAME: spark
       TIMEZONE: Europe/Berlin
-      SPARK_MASTER: master
+      SPARK_MASTER_ADDRESS: spark-master
+      HADOOP_MASTER_ADDRESS: hdfs-name
+
+networks:
+  default:
+    external:
+      name: biggishdfs_default

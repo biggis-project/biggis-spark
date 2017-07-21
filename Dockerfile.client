@@ -1,0 +1,20 @@
+FROM biggis/spark:2.1.0
+
+MAINTAINER wipatrick
+
+ARG BUILD_DATE
+ARG VCS_REF
+
+LABEL eu.biggis-project.build-date=$BUILD_DATE \
+      eu.biggis-project.license="MIT" \
+      eu.biggis-project.name="BigGIS" \
+      eu.biggis-project.url="http://biggis-project.eu/" \
+      eu.biggis-project.vcs-ref=$VCS_REF \
+      eu.biggis-project.vcs-type="Git" \
+      eu.biggis-project.vcs-url="https://github.com/biggis-project/biggis-spark" \
+      eu.biggis-project.environment="dev" \
+      eu.biggis-project.version=$SPARK_VERSION
+
+COPY ./client /
+
+CMD ["submit.sh"]
