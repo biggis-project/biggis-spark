@@ -5,7 +5,7 @@ services:
   spark-client:
     image: biggis/spark-client:2.1.0
     hostname: spark-client
-    command: submit.sh /opt/spark-example-1.0-SNAPSHOT.jar
+    command: submit.sh /opt/spark-example-1.0-SNAPSHOT.jar hdfs:///hamlet.txt hdfs:///counts
     environment:
       USER_ID: ${USER_ID-1000}
       USER_NAME: spark-client

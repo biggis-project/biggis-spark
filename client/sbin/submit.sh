@@ -35,5 +35,6 @@ else
         --driver-memory 1g \
         --executor-memory 1g \
         --executor-cores 1 \
-        $PATH_TO_JAR
+        $PATH_TO_JAR \
+        "${@:2}"
 fi
