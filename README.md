@@ -10,6 +10,12 @@ Docker Compose >= 1.9.0
 ```sh
 docker-compose up -d
 ```
+## Submit Spark Job
+Build Spark sample job.
+```sh
+cd job/spark-example
+mvn clean package
+```
 The image ```biggis/spark-client:2.1.0``` can be used submit Spark jobs to the Spark cluster. Edit the environment variables and volumes in the ```docker-compose.client.yml``` according to your setup and specify what spark job (jar and class) to submit. The jar file is mapped as a local volume.  
 ```yaml
 version: '2.1'
