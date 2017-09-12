@@ -21,11 +21,11 @@ else
   if [ $1 = "master" ]; then
     bootstrap
     echo "[ $(date) ] Start Spark master"
-    exec spark-class org.apache.spark.deploy.master.Master --host $(hostname)
+    exec spark-class org.apache.spark.deploy.master.Master --host $(hostname -i)
   elif [ $1 = "worker" ]; then
     bootstrap
     echo "[ $(date) ] Start Spark worker"
-    exec spark-class org.apache.spark.deploy.worker.Worker --host $(hostname) spark://${SPARK_MASTER_ADDRESS}:7077
+    exec spark-class org.apache.spark.deploy.worker.Worker --host $(hostname -i) spark://${SPARK_MASTER_ADDRESS}:7077
   else
     exec "$@"
   fi

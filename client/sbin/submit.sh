@@ -27,14 +27,14 @@ if [ $# -eq 0 ]; then
   usage
 else
   bootstrap
-  echo "[ $(date) ] Submit Spark job"
+  echo "[ $(date) ] Submit Spark job: $PATH_TO_JAR ${@:2}"
   exec $SPARK_HOME/bin/spark-submit \
         --deploy-mode $DEPLOY_MODE \
         --class $CLASS \
         --master spark://$SPARK_MASTER_ADRESS:7077 \
         --driver-memory 1g \
         --executor-memory 1g \
-        --executor-cores 1 \
+        --executor-cores 2 \
         $PATH_TO_JAR \
         "${@:2}"
 fi

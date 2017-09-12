@@ -16,8 +16,7 @@ public class WordCount {
     public static void main (String [] args ){
 
         SparkConf conf = new SparkConf()
-                .setAppName(WordCount.class.getName())
-                .setMaster("spark://spark-master:7077");
+                .setAppName(WordCount.class.getName());
         JavaSparkContext sc = new JavaSparkContext(conf);
 
         String input = args[0];
@@ -30,6 +29,8 @@ public class WordCount {
                 .reduceByKey((a,b) -> a + b);
 
         counts.saveAsTextFile(output);
+        sc.stop();
+
 
     }
 }

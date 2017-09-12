@@ -25,7 +25,6 @@ LABEL eu.biggis-project.build-date=$BUILD_DATE \
 RUN set -x && \
     apk --update add --virtual build-dependencies curl && \
     curl -s ${SPARK_ARCHIVE} | tar -xzf - -C /opt && \
-    # mkdir -p /data/spark && \
     apk del build-dependencies && \
     rm -rf /var/cache/apk/*
 
