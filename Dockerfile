@@ -25,7 +25,7 @@ LABEL eu.biggis-project.build-date=$BUILD_DATE \
 RUN set -x && \
     apk --update add --virtual build-dependencies curl && \
     curl -s ${SPARK_ARCHIVE} | tar -xzf - -C /opt && \
-    mv spark-${SPARK_VERSION}-bin-hadoop2.7 spark && \
+    mv /opt/spark-${SPARK_VERSION}-bin-hadoop2.7 /opt/spark && \
     apk del build-dependencies && \
     rm -rf /var/cache/apk/*
 
