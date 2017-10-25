@@ -1,0 +1,44 @@
+version: '2'
+services:
+
+  spark-master:
+    image: biggis/spark:2.1.0
+    hostname: spark-master
+    container_name: spark-master
+    ports:
+      - "4040:4040"
+      - "6066:6066"
+      - "7077:7077"
+      - "8080:8080"
+    command: start.sh master
+    environment:
+      USER_ID: 1000
+      USER_NAME: spark
+      TIMEZONE: Europe/Berlin
+      HADOOP_MASTER_ADDRESS: hdfs-name.hdfs
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: spark-master=true
+    volumes:
+      - spark-home:/opt/spark
+
+  spark-worker:
+    image: biggis/spark:2.1.0
+    hostname: spark-worker
+    depends_on:
+      - spark-master
+    command: start.sh worker
+    environment:
+      USER_ID: 1000
+      USER_NAME: spark
+      TIMEZONE: Europe/Berlin
+      SPARK_MASTER_ADDRESS: spark-master
+      HADOOP_MASTER_ADDRESS: hdfs-name.hdfs
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.global: 'true'
+
+volumes:
+  spark-home:
+    driver: rancher-nfs
+    external: true
