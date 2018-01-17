@@ -1,4 +1,4 @@
-FROM biggis/spark:2.1.0
+FROM biggis/spark:2.2.0
 
 MAINTAINER wipatrick
 

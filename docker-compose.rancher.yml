@@ -2,7 +2,7 @@ version: '2'
 services:
 
   spark-master:
-    image: biggis/spark:2.1.0
+    image: biggis/spark:2.2.0
     hostname: spark-master
     container_name: spark-master
     ports:
@@ -23,7 +23,7 @@ services:
       - spark-home:/opt/spark
 
   spark-worker:
-    image: biggis/spark:2.1.0
+    image: biggis/spark:2.2.0
     hostname: spark-worker
     depends_on:
       - spark-master

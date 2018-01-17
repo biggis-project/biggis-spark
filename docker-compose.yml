@@ -3,7 +3,7 @@ version: '2.1'
 services:
 
   spark-master:
-    image: biggis/spark:2.1.0
+    image: biggis/spark:2.2.0
     hostname: spark-master
     ports:
       - "6066:6066"
@@ -17,7 +17,7 @@ services:
       HADOOP_MASTER_ADDRESS: hdfs-name
 
   spark-worker:
-    image: biggis/spark:2.1.0
+    image: biggis/spark:2.2.0
     depends_on:
       - spark-master
     command: start.sh worker
