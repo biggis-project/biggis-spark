@@ -38,17 +38,20 @@ HADOOP_CONF_DIR=/etc/hadoop/conf
 # - HADOOP_CONF_DIR, to point Spark towards Hadoop configuration files
 # - SPARK_EXECUTOR_INSTANCES, Number of executors to start (Default: 2)
 # - SPARK_EXECUTOR_CORES, Number of cores for the executors (Default: 1).
+# SPARK_EXECUTOR_CORES=4
 # - SPARK_EXECUTOR_MEMORY, Memory per Executor (e.g. 1000M, 2G) (Default: 1G)
-SPARK_EXECUTOR_MEMORY=6G
+# SPARK_EXECUTOR_MEMORY=1G
 # - SPARK_DRIVER_MEMORY, Memory for Driver (e.g. 1000M, 2G) (Default: 1G)
-SPARK_DRIVER_MEMORY=1G
+#SPARK_DRIVER_MEMORY=4G
 
 # Options for the daemons used in the standalone deploy mode
 # - SPARK_MASTER_HOST, to bind the master to a different IP address or hostname
 # - SPARK_MASTER_PORT / SPARK_MASTER_WEBUI_PORT, to use non-default ports for the master
 # - SPARK_MASTER_OPTS, to set config properties only for the master (e.g. "-Dx=y")
 # - SPARK_WORKER_CORES, to set the number of cores to use on this machine
+SPARK_WORKER_CORES=4
 # - SPARK_WORKER_MEMORY, to set how much total memory workers have to give executors (e.g. 1000m, 2g)
+SPARK_WORKER_MEMORY=7G
 # - SPARK_WORKER_PORT / SPARK_WORKER_WEBUI_PORT, to use non-default ports for the worker
 # - SPARK_WORKER_INSTANCES, to set the number of worker processes per node
 # - SPARK_WORKER_DIR, to set the working directory of worker processes
