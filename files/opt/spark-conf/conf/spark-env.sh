@@ -39,7 +39,9 @@ HADOOP_CONF_DIR=/etc/hadoop/conf
 # - SPARK_EXECUTOR_INSTANCES, Number of executors to start (Default: 2)
 # - SPARK_EXECUTOR_CORES, Number of cores for the executors (Default: 1).
 # - SPARK_EXECUTOR_MEMORY, Memory per Executor (e.g. 1000M, 2G) (Default: 1G)
+SPARK_EXECUTOR_MEMORY=6G
 # - SPARK_DRIVER_MEMORY, Memory for Driver (e.g. 1000M, 2G) (Default: 1G)
+SPARK_DRIVER_MEMORY=1G
 
 # Options for the daemons used in the standalone deploy mode
 # - SPARK_MASTER_HOST, to bind the master to a different IP address or hostname
