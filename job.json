@@ -1,0 +1,48 @@
+curl -X POST http://node1.biggis.project.de:6066/v1/submissions/create --header "Content-Type:application/json;charset=UTF-8" --data '{
+  "action" : "CreateSubmissionRequest",
+  "appArgs" : [ "hdfs:///test/hamlet.txt", "hdfs:///test/counts-patrick" ],
+  "appResource" : "hdfs:///jobs/spark-example/spark-example-1.0-SNAPSHOT.jar",
+  "clientSparkVersion" : "2.1.0",
+  "environmentVariables" : {
+    "SPARK_ENV_LOADED" : "1"
+  },
+  "mainClass" : "eu.biggis.sparkexample.WordCount",
+  "sparkProperties" : {
+    "spark.app.name" : "RestCount",
+    "spark.submit.deployMode" : "cluster",
+    "spark.master" : "spark://spark-master.spark:6066"
+  }
+}'
+
+curl -X POST http://node1.biggis.project.de:6066/v1/submissions/create --header "Content-Type:application/json;charset=UTF-8" --data '{
+  "action" : "CreateSubmissionRequest",
+  "appArgs" : [ "hdfs:///test/hamlet.txt", "hdfs:///test/counts-ak" ],
+  "appResource" : "hdfs:///jobs/spark-example/biggis-landuse-0.0.4-SNAPSHOT.jar",
+  "clientSparkVersion" : "2.1.0",
+  "environmentVariables" : {
+    "SPARK_ENV_LOADED" : "1"
+  },
+  "mainClass" : "biggis.landuse.spark.examples.WordCount",
+  "sparkProperties" : {
+    "spark.app.name" : "RestCount",
+    "spark.submit.deployMode" : "cluster",
+    "spark.master" : "spark://spark-master.spark:6066"
+  }
+}'
+
+
+curl -X POST http://localhost:6066/v1/submissions/create --header "Content-Type:application/json;charset=UTF-8" --data '{
+  "action" : "CreateSubmissionRequest",
+  "appArgs" : [ "hdfs:///demo/hamlet.txt", "hdfs:///demo/counts" ],
+  "appResource" : "hdfs:///jobs/spark-example/spark-example-1.0-SNAPSHOT.jar",
+  "clientSparkVersion" : "2.1.0",
+  "environmentVariables" : {
+    "SPARK_ENV_LOADED" : "1"
+  },
+  "mainClass" : "eu.biggis.sparkexample.WordCount",
+  "sparkProperties" : {
+    "spark.app.name" : "WordCount",
+    "spark.submit.deployMode" : "cluster",
+    "spark.master" : "spark://spark-master:6066"
+  }
+}'

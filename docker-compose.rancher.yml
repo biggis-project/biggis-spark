@@ -21,6 +21,11 @@ services:
       io.rancher.scheduler.affinity:host_label: spark-master=true
     volumes:
       - spark-home:/opt/spark
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"
 
   spark-worker:
     image: biggis/spark:2.2.0
@@ -37,7 +42,12 @@ services:
     labels:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.global: 'true'
-
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"
+        
 volumes:
   spark-home:
     driver: rancher-nfs
