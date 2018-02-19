@@ -7,6 +7,8 @@ env:
   global:
     - IMG_SPARK=biggis/spark:2.2.0
     - IMG_SPARK_CLIENT=biggis/spark-client:2.2.0
+    - RANCHER_ENV=cluster
+    - RANCHER_STACK=analytics
 
 install:
   #login to dockerhub
@@ -22,3 +24,6 @@ after_success:
   #push the image to dockerhub
   - docker push $IMG_SPARK
   - docker push $IMG_SPARK_CLIENT
+  #deploy to Rancher
+  - docker run -ti --rm cdrx/rancher-gitlab-deploy:latest upgrade --rancher-url $RANCHER_URL --rancher-key $RANCHER_ACCESS_KEY --rancher-secret $RANCHER_SECRET_KEY --environment $RANCHER_ENV --stack $RANCHER_STACK --service spark-master --new-image $IMG --finish-upgrade
+  - docker run -ti --rm cdrx/rancher-gitlab-deploy:latest upgrade --rancher-url $RANCHER_URL --rancher-key $RANCHER_ACCESS_KEY --rancher-secret $RANCHER_SECRET_KEY --environment $RANCHER_ENV --stack $RANCHER_STACK --service spark-worker --new-image $IMG --finish-upgrade
