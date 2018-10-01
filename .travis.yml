@@ -5,8 +5,8 @@ services:
 
 env:
   global:
-    - IMG=biggis/spark:2.3.1
-    - IMG_CLIENT=biggis/spark-client:2.3.1
+    - IMG=biggis/spark:2.3.2
+    - IMG_CLIENT=biggis/spark-client:2.3.2
     - RANCHER_ENV=cluster
     - RANCHER_STACK=analytics
 
@@ -17,13 +17,13 @@ install:
 script:
   #build the images
   - docker build --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` --build-arg VCS_REF=`git rev-parse --short HEAD` -t $IMG .
-  #- docker build --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` --build-arg VCS_REF=`git rev-parse --short HEAD` -t $IMG_CLIENT -f Dockerfile.client .
+  - docker build --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` --build-arg VCS_REF=`git rev-parse --short HEAD` -t $IMG_CLIENT -f Dockerfile.client .
 
 after_success:
   - echo "build successful"
   #push the image to dockerhub
   - docker push $IMG
-  #- docker push $IMG_CLIENT
+  - docker push $IMG_CLIENT
   #deploy to Rancher
-  - docker run -ti --rm cdrx/rancher-gitlab-deploy:latest upgrade --rancher-url $RANCHER_URL --rancher-key $RANCHER_ACCESS_KEY --rancher-secret $RANCHER_SECRET_KEY --environment $RANCHER_ENV --stack $RANCHER_STACK --service spark-master --new-image $IMG --finish-upgrade
+  #- docker run -ti --rm cdrx/rancher-gitlab-deploy:latest upgrade --rancher-url $RANCHER_URL --rancher-key $RANCHER_ACCESS_KEY --rancher-secret $RANCHER_SECRET_KEY --environment $RANCHER_ENV --stack $RANCHER_STACK --service spark-master --new-image $IMG --finish-upgrade
   #- docker run -ti --rm cdrx/rancher-gitlab-deploy:latest upgrade --rancher-url $RANCHER_URL --rancher-key $RANCHER_ACCESS_KEY --rancher-secret $RANCHER_SECRET_KEY --environment $RANCHER_ENV --stack $RANCHER_STACK --service spark-worker --new-image $IMG --finish-upgrade

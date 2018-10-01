@@ -2,8 +2,8 @@ FROM biggis/hdfs:2.7.1
 
 MAINTAINER wipatrick
 
-ARG SPARK_VERSION=2.3.1
-ARG SPARK_ARCHIVE=http://d3kbcqa49mib13.cloudfront.net/spark-2.3.1-bin-hadoop2.7.tgz
+ARG SPARK_VERSION=2.3.2
+ARG SPARK_ARCHIVE=http://www-us.apache.org/dist/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop2.7.tgz
 
 ARG BUILD_DATE
 ARG VCS_REF

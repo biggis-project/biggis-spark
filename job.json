@@ -2,7 +2,7 @@ curl -X POST http://node1.biggis.project.de:6066/v1/submissions/create --header 
   "action" : "CreateSubmissionRequest",
   "appArgs" : [ "hdfs:///test/hamlet.txt", "hdfs:///test/counts-patrick" ],
   "appResource" : "hdfs:///jobs/spark-example/spark-example-1.0-SNAPSHOT.jar",
-  "clientSparkVersion" : "2.3.1",
+  "clientSparkVersion" : "2.3.2",
   "environmentVariables" : {
     "SPARK_ENV_LOADED" : "1"
   },
@@ -18,7 +18,7 @@ curl -X POST http://node1.biggis.project.de:6066/v1/submissions/create --header 
   "action" : "CreateSubmissionRequest",
   "appArgs" : [ "hdfs:///test/hamlet.txt", "hdfs:///test/counts-ak" ],
   "appResource" : "hdfs:///jobs/spark-example/biggis-landuse-0.0.4-SNAPSHOT.jar",
-  "clientSparkVersion" : "2.3.1",
+  "clientSparkVersion" : "2.3.2",
   "environmentVariables" : {
     "SPARK_ENV_LOADED" : "1"
   },
@@ -35,7 +35,7 @@ curl -X POST http://localhost:6066/v1/submissions/create --header "Content-Type:
   "action" : "CreateSubmissionRequest",
   "appArgs" : [ "hdfs:///demo/hamlet.txt", "hdfs:///demo/counts" ],
   "appResource" : "hdfs:///jobs/spark-example/spark-example-1.0-SNAPSHOT.jar",
-  "clientSparkVersion" : "2.3.1",
+  "clientSparkVersion" : "2.3.2",
   "environmentVariables" : {
     "SPARK_ENV_LOADED" : "1"
   },
