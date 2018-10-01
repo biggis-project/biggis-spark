@@ -3,7 +3,7 @@ version: '2.1'
 services:
 
   spark-client:
-    image: biggis/spark-client:2.2.0
+    image: biggis/spark-client:2.3.1
     hostname: spark-client
     command: submit.sh /opt/spark-example-1.0-SNAPSHOT.jar hdfs:///hdfs/hamlet.txt hdfs:///hdfs/counts
     environment:

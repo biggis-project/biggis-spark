@@ -2,7 +2,7 @@ version: '2'
 services:
 
   spark-master:
-    image: biggis/spark:2.2.0
+    image: biggis/spark:2.3.1
     hostname: spark-master
     container_name: spark-master
     ports:
@@ -28,7 +28,7 @@ services:
         max-file: "1"
 
   spark-worker:
-    image: biggis/spark:2.2.0
+    image: biggis/spark:2.3.1
     hostname: spark-worker
     depends_on:
       - spark-master
@@ -47,7 +47,7 @@ services:
       options:
         max-size: "1m"
         max-file: "1"
-        
+
 volumes:
   spark-home:
     driver: rancher-nfs

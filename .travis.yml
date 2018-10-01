@@ -5,8 +5,8 @@ services:
 
 env:
   global:
-    - IMG=biggis/spark:2.2.0
-    - IMG_CLIENT=biggis/spark-client:2.2.0
+    - IMG=biggis/spark:2.3.1
+    - IMG_CLIENT=biggis/spark-client:2.3.1
     - RANCHER_ENV=cluster
     - RANCHER_STACK=analytics
 
