@@ -49,9 +49,11 @@ HADOOP_CONF_DIR=/etc/hadoop/conf
 # - SPARK_MASTER_PORT / SPARK_MASTER_WEBUI_PORT, to use non-default ports for the master
 # - SPARK_MASTER_OPTS, to set config properties only for the master (e.g. "-Dx=y")
 # - SPARK_WORKER_CORES, to set the number of cores to use on this machine
-SPARK_WORKER_CORES=4
+# when not specified default value is to use all cores
+#SPARK_WORKER_CORES=4
 # - SPARK_WORKER_MEMORY, to set how much total memory workers have to give executors (e.g. 1000m, 2g)
-SPARK_WORKER_MEMORY=7G
+# when not specified default value is to use all memory - 1GB for OS
+SPARK_WORKER_MEMORY=4G
 # - SPARK_WORKER_PORT / SPARK_WORKER_WEBUI_PORT, to use non-default ports for the worker
 # - SPARK_WORKER_INSTANCES, to set the number of worker processes per node
 # - SPARK_WORKER_DIR, to set the working directory of worker processes

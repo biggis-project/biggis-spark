@@ -15,7 +15,8 @@ services:
       USER_ID: 1000
       USER_NAME: spark
       TIMEZONE: Europe/Berlin
-      HADOOP_MASTER_ADDRESS: hdfs-name.hdfs
+      HADOOP_MASTER_ADDRESS: hdfs-name.storage
+      REMAINING_SYS_MEM_IN_PERCENT: 20
     labels:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.affinity:host_label: spark-master=true
@@ -38,7 +39,8 @@ services:
       USER_NAME: spark
       TIMEZONE: Europe/Berlin
       SPARK_MASTER_ADDRESS: spark-master
-      HADOOP_MASTER_ADDRESS: hdfs-name.hdfs
+      HADOOP_MASTER_ADDRESS: hdfs-name.storage
+      REMAINING_SYS_MEM_IN_PERCENT: 20
     labels:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.global: 'true'
