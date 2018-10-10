@@ -4,7 +4,6 @@ services:
   spark-master:
     image: biggis/spark:2.3.2
     hostname: spark-master
-    container_name: spark-master
     ports:
       - "4040:4040"
       - "6066:6066"
@@ -30,7 +29,6 @@ services:
 
   spark-worker:
     image: biggis/spark:2.3.2
-    hostname: spark-worker
     depends_on:
       - spark-master
     command: start.sh worker
@@ -38,7 +36,7 @@ services:
       USER_ID: 1000
       USER_NAME: spark
       TIMEZONE: Europe/Berlin
-      SPARK_MASTER_ADDRESS: spark-master
+      SPARK_MASTER_ADDRESS: spark-master.analytics
       HADOOP_MASTER_ADDRESS: hdfs-name.storage
       REMAINING_SYS_MEM_IN_PERCENT: 20
     labels:
