@@ -6,6 +6,7 @@ services:
     image: biggis/spark:2.3.2
     hostname: spark-master
     ports:
+      - "4040:4040"
       - "6066:6066"
       - "7077:7077"
       - "8080:8080"
