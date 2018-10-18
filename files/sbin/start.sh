@@ -41,7 +41,7 @@ else
     exec spark-class org.apache.spark.deploy.master.Master --host $(hostname -i)
   elif [ $1 = "worker" ]; then
     bootstrap
-    dynamicMemoryAllocatio
+    dynamicMemoryAllocation
     setWorkerInstances
     echo "[ $(date) ] Start Spark worker"
     exec spark-class org.apache.spark.deploy.worker.Worker --host $(hostname -i) spark://${SPARK_MASTER_ADDRESS}:7077
