@@ -16,6 +16,7 @@ services:
       TIMEZONE: Europe/Berlin
       HADOOP_MASTER_ADDRESS: hdfs-name.storage
       REMAINING_SYS_MEM_IN_PERCENT: 20
+      SPARK_WORKER_INSTANCS: 2
     labels:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.affinity:host_label: spark-master=true
@@ -39,6 +40,7 @@ services:
       SPARK_MASTER_ADDRESS: spark-master.analytics
       HADOOP_MASTER_ADDRESS: hdfs-name.storage
       REMAINING_SYS_MEM_IN_PERCENT: 20
+      SPARK_WORKER_INSTANCS: 2
     labels:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.global: 'true'

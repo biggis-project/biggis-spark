@@ -56,6 +56,7 @@ HADOOP_CONF_DIR=/etc/hadoop/conf
 SPARK_WORKER_MEMORY=4G
 # - SPARK_WORKER_PORT / SPARK_WORKER_WEBUI_PORT, to use non-default ports for the worker
 # - SPARK_WORKER_INSTANCES, to set the number of worker processes per node
+SPARK_WORKER_INSTANCS=1
 # - SPARK_WORKER_DIR, to set the working directory of worker processes
 SPARK_WORKER_DIR=/data/spark
 SPARK_WORKER_OPTS="-Dspark.worker.cleanup.enabled=true -Dspark.worker.cleanup.interval=1800 -Dspark.worker.cleanup.appDataTtl=1800"

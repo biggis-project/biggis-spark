@@ -17,6 +17,7 @@ services:
       TIMEZONE: Europe/Berlin
       HADOOP_MASTER_ADDRESS: hdfs-name
       REMAINING_SYS_MEM_IN_PERCENT: 20
+      SPARK_WORKER_INSTANCS: 1
 
   spark-worker:
     image: biggis/spark:2.3.2
@@ -32,6 +33,7 @@ services:
       SPARK_MASTER_ADDRESS: spark-master
       HADOOP_MASTER_ADDRESS: hdfs-name
       REMAINING_SYS_MEM_IN_PERCENT: 20
+      SPARK_WORKER_INSTANCS: 1
 
 networks:
   default:

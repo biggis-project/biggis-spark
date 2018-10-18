@@ -25,6 +25,10 @@ function dynamicMemoryAllocation {
   sed -i -e "s/SPARK_WORKER_MEMORY=4G/SPARK_WORKER_MEMORY=${SPARK_WORKER_PORTION_IN_MEGABYTE}m/g" $SPARK_CONF_DIR/spark-env.sh
 }
 
+function setWorkerInstances {
+  sed -i -e "s/SPARK_WORKER_INSTANCS=1/SPARK_WORKER_INSTANCS=${SPARK_WORKER_INSTANCS}/g" $SPARK_CONF_DIR/spark-env.sh
+}
+
 # Determine whether this container will run as master, worker, or with another command
 if [ -z "$1" ]; then
   echo "Select the role for this container with the docker cmd 'master' or 'worker'"
@@ -32,11 +36,13 @@ else
   if [ $1 = "master" ]; then
     bootstrap
     dynamicMemoryAllocation
+    setWorkerInstances
     echo "[ $(date) ] Start Spark master"
     exec spark-class org.apache.spark.deploy.master.Master --host $(hostname -i)
   elif [ $1 = "worker" ]; then
     bootstrap
-    dynamicMemoryAllocation
+    dynamicMemoryAllocatio
+    setWorkerInstances
     echo "[ $(date) ] Start Spark worker"
     exec spark-class org.apache.spark.deploy.worker.Worker --host $(hostname -i) spark://${SPARK_MASTER_ADDRESS}:7077
   else
